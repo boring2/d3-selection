@@ -1,5 +1,4 @@
-import matcher from "../matcher.js";
-import constant from "../constant.js";
+import {childMatcher} from "../matcher.js";
 
 var find = Array.prototype.find;
 
@@ -7,6 +6,10 @@ function childFind(match) {
   return function() {
     return find.call(this.children, match);
   };
+}
+
+function childFirst() {
+  return this.firstElementChild;
 }
 
 export default function(match) {

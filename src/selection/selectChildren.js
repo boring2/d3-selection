@@ -1,4 +1,4 @@
-import matcher from "../matcher.js";
+import {childMatcher} from "../matcher.js";
 
 var filter = Array.prototype.filter;
 
