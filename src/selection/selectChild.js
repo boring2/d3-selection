@@ -4,14 +4,12 @@ import constant from "../constant.js";
 var find = Array.prototype.find;
 
 function childFind(match) {
-  match = typeof match === "function" ? match
-        : match == null ? constant(true)
-        : matcher(match);
   return function() {
-    return find.call(this.children, function(e) { return match.call(e); });
+    return find.call(this.children, match);
   };
 }
 
 export default function(match) {
-  return this.select(childFind(match));
+  return this.select(match == null ? childFirst
+      : childFind(typeof match === "function" ? match : childMatcher(match)));
 }
